@@ -11,12 +11,12 @@ if ($_SESSION['isLogined']) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="description" value="Login page @ What time is it" />
-    <title>Login</title>
+    <meta name="description" value="Register page @ What time is it" />
+    <title>Register</title>
 </head>
 <body>
-    
-    <form method="POST" action="loginCheck.php">
+
+    <form method="POST" action="register.php">
         Account:
         <input type="text" name="acc" value="" autocomplete="off" />
         <br />

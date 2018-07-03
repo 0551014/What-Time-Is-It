@@ -20,6 +20,8 @@
     <Compile Include="init.php" />
     <Compile Include="login.php" />
     <Compile Include="loginCheck.php" />
+    <Compile Include="logout.php" />
     <Compile Include="member.php" />
+    <Compile Include="register.php" />
   </ItemGroup>
 </Project>
