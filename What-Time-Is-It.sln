@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "What-Time-Is-It", "..\..\..\..\..\Users\DragonLin\Source\Repos\What-Time-Is-It\What-Time-Is-It\What-Time-Is-It.phpproj", "{00F876B2-6845-47F3-A968-DC566CD8EFFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00F876B2-6845-47F3-A968-DC566CD8EFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F876B2-6845-47F3-A968-DC566CD8EFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8A64854-4B6B-4E5C-9049-08193BCDAC97}
+	EndGlobalSection
+EndGlobal
