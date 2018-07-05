@@ -33,11 +33,11 @@ function showError($errorCode, $errorMsg, $errorData = NULL) {
         ));
     exit(-99);
 }
-function returnJSON($array) {
+function returnJSON($resultData) {
     echo json_encode( array (
             "RC" => 0,
             "Msg" => "Successtul",
-            "result" => $array
+            "result" => $resultData
         ));
     exit(0);
 }

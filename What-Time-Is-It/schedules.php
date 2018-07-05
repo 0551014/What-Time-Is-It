@@ -70,12 +70,7 @@ if ($_METHOD == 'POST') {
                         showError(-6, "Please contact admin, count=" . $sth->rowCount());
                     }
                 } else {
-                    $error = array (
-                        "postdata" => $json,
-                        "decoded" => $data
-                        );
-
-                    showError(-100, "SQL Execute ERROR.", $error);
+                    showError(-100, "SQL Execute ERROR.");
                 }
             } else {
                 showError(-100, "SQL Statment ERROR.");
