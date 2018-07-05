@@ -1,29 +1,58 @@
 <?php
 define('ROOT', dirname(__FILE__));
 @require_once(ROOT . '\init.php');
-if ($_SESSION['isLogined']) {
-    echo "<p>You've logged in, {$_SESSION['account']}.</p>";
-    echo '<p1>Redirect in 5 sec. or click <a href="./member.php">this</a>';
-    header("refresh:5; url=member.php");
-    exit(0);
+
+if ($_METHOD == 'GET') {
+    if ($_SESSION['isLogined'] == true) {
+        $account = array (
+            "accountID" => $_SESSION['accountID'],
+            "account" => $_SESSION['account']
+            );
+        returnJSON($account);
+    } else {
+        showError(1, "Not loggined");
+    }
 }
+if ($_METHOD == 'POST') {
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+    if (isset($data['account']) && isset($data['password'])) {
+        $account  = $data['account'];
+        $password = $data['password'];
+        try {
+            $PDO = new PDO($dsn, $dbacc, $dbpwd);
+            $PDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            if ($sth = $PDO->prepare("SELECT * FROM `account` WHERE `account` = :account LIMIT 1")) {
+                $sth->bindValue(':account', $account, PDO::PARAM_STR);
+                if ($sth->execute()) {
+                    $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if ( password_verify($password, $result[0]['password']) ) {
+                        $_SESSION['isLogined'] = true;
+                        $_SESSION['accountID'] = $result[0]['rowID'];
+                        $_SESSION['account'] = $result[0]['account'];
+                        // Login successful
+                        $account = array (
+                            "accountID" => $_SESSION['accountID'],
+                            "account" => $_SESSION['account']
+                        );
+                        returnJSON($account);
+                    } else {
+                        showError(-88, "Incorrect account and password combination");
+                    }
+                } else {
+                    showError(-100, "SQL Execute ERROR.");
+                }
+            } else {
+                showError(-100, "SQL Statment ERROR.");
+            }
+
+        }
+        catch (Exception $ex) {
+            showError(-999, "Exception Occured.");
+        }
+    } else {
+        showError(100, "Wrong Data");
+    }
+}
+
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta name="description" value="Login page @ What time is it" />
-    <title>Login</title>
-</head>
-<body>
-    
-    <form method="POST" action="loginCheck.php">
-        Account:
-        <input type="text" name="acc" value="" autocomplete="off" />
-        <br />
-        Password:
-        <input type="text" name="pwd" value="" autocomplete="off" />
-        <input type="submit" value="Login" />
-    </form>
-    <a href="register.php">Register page</a>
-</body>
-</html>

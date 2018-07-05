@@ -16,12 +16,12 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="forgetpassword.php" />
     <Compile Include="index.php" />
     <Compile Include="init.php" />
     <Compile Include="login.php" />
-    <Compile Include="loginCheck.php" />
     <Compile Include="logout.php" />
-    <Compile Include="member.php" />
     <Compile Include="register.php" />
+    <Compile Include="schedules.php" />
   </ItemGroup>
 </Project>
